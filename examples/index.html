@@ -9,11 +9,11 @@
             padding: 0;
             margin: 0;
             width: 100%;
-            height: 100%;
+            /*height: 100%;*/
         }
         .container{
             width: 100%;
-            height: 100%;
+            /*height: 100%;*/
         }
 
         .panel{
@@ -27,14 +27,34 @@
 
         .markdown pre, .markdown code{
             width: 100%;
+            white-space: pre-wrap;
+        }
+
+        .markdown code{
+
         }
 
         .preview{
             margin-left: 50%;
             width: 50%;
-            padding: 30px;
+            padding: 10px 40px;
         }
 
+        .hljs-ln-numbers{
+            vertical-align: top;
+        }
+
+        .hljs-ln td.hljs-ln-code{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .split-line{
+            height: 100vh;
+            border-right: 1px solid black;
+            width: 2px;
+            float: left;
+        }
     </style>
     <link rel="stylesheet" href="//cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css">
 
@@ -47,6 +67,7 @@
     <div class="panel markdown">
         <pre><code class="markdown markdown-container"></code></pre>
     </div>
+    <div class="split-line"></div>
     <div class="panel preview markdown-body"></div>
 </div>
 
