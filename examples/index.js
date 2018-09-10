@@ -1,6 +1,6 @@
 define(['marked', '../plugins/marked-plugin-line-number'], function (marked) {return function init(md){
 
-    $('.markdown .markdown-container').html(md);
+    $('.markdown .markdown-container').html((md.replace(/`/g,'')));
 
     const markdown = document.querySelector('.markdown pre code');
     hljs.highlightBlock(markdown);
