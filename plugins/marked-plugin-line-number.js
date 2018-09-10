@@ -15,8 +15,8 @@
     }
 
     const Renderer = marked.Renderer;
-    Renderer.prototype.line = function(text) {
-        return '<div>'+text+'</div>';
+    Renderer.prototype.line = function(line) {
+        return '<div id="line-number-anchor-'+line+'" style="height: 0;"></div>';
     };
 
     const Lexer = marked.Lexer;
