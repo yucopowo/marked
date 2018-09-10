@@ -5,5 +5,5 @@
  */
 
 'use strict';
-import marked from './marked';
-export default marked;
+const marked = require('./marked');
+module.exports = marked.default;

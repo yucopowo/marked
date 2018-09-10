@@ -179,6 +179,10 @@ Parser.prototype.tok = function() {
         case 'text': {
             return this.renderer.paragraph(this.parseText());
         }
+        case 'line': {
+            // =======================================
+            return this.renderer.line(this.token.line);
+        }
     }
 };
 
