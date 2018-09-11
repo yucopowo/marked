@@ -1,3 +1,11 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+}
+
 html,body{
     padding: 0;
     margin: 0;
@@ -17,9 +25,9 @@ html,body{
     height: 100%;
     width: 33%;
 
-    padding-bottom: 600px;
+    /*padding-bottom: 600px;*/
 
-    background-color: #0366d614;
+    /*background-color: #0366d614;*/
 }
 
 
@@ -33,7 +41,10 @@ html,body{
     word-break: break-all;
     white-space: pre-wrap;
 }
-
+#tokens{
+    width: 100%;
+    height: 100%;
+}
 
 
 
@@ -62,6 +73,10 @@ html,body{
     table-layout: fixed;
 }
 
+.markdown #editor{
+    width: 100%;
+    height: 100%;
+}
 
 
 
@@ -79,7 +94,7 @@ html,body{
 
 .hljs-ln-numbers{
     vertical-align: top;
-    width: 14%;
+    width: 40px;
 }
 
 .hljs-ln td.hljs-ln-code{

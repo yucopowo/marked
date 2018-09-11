@@ -76,25 +76,6 @@ Lexer.prototype.token = function(src, top) {
         ischecked;
 
     while (src) {
-
-        // =======================================
-        // linenumber
-        // debugger
-        if (cap = this.rules.linenumber.exec(src)) {
-            src = src.substring(cap[0].length);
-            if (cap[0].length > 1) {
-                this.tokens.push({
-                    type: 'linenumber',
-                    text: cap[0].replace('[__:','').replace(':__]','')
-                });
-            }
-            continue;
-        }
-
-        // =======================================
-        let src1 = src.replace(/\[__\:\d+\:__\]/g,'');
-
-
         // newline
         if (cap = this.rules.newline.exec(src)) {
             src = src.substring(cap[0].length);
@@ -103,7 +84,6 @@ Lexer.prototype.token = function(src, top) {
                     type: 'space'
                 });
             }
-            continue;
         }
 
         // code
@@ -120,7 +100,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // fences (gfm)
-        if (cap = this.rules.fences.exec(src1)) {
+        if (cap = this.rules.fences.exec(src)) {
             src = src.substring(cap[0].length);
             this.tokens.push({
                 type: 'code',
@@ -142,7 +122,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // table no leading pipe (gfm)
-        if (top && (cap = this.rules.nptable.exec(src1))) {
+        if (top && (cap = this.rules.nptable.exec(src))) {
             item = {
                 type: 'table',
                 header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
@@ -176,8 +156,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // hr
-        if (cap = this.rules.hr.exec(src1)) {
-            cap = this.rules.hr.exec(src);
+        if (cap = this.rules.hr.exec(src)) {
             src = src.substring(cap[0].length);
             this.tokens.push({
                 type: 'hr'
@@ -185,10 +164,8 @@ Lexer.prototype.token = function(src, top) {
             continue;
         }
 
-
         // blockquote
-        if (cap = this.rules.blockquote.exec(src1)) {
-            // cap = this.rules.blockquote.exec(src);
+        if (cap = this.rules.blockquote.exec(src)) {
             src = src.substring(cap[0].length);
 
             this.tokens.push({
@@ -210,7 +187,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // list
-        if (cap = this.rules.list.exec(src1)) {
+        if (cap = this.rules.list.exec(src)) {
             src = src.substring(cap[0].length);
             bull = cap[2];
             isordered = bull.length > 1;
@@ -321,7 +298,7 @@ Lexer.prototype.token = function(src, top) {
                     ? 'paragraph'
                     : 'html',
                 pre: !this.options.sanitizer
-                    && (cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style'),
+                && (cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style'),
                 text: cap[0]
             });
             continue;
@@ -342,7 +319,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // table (gfm)
-        if (top && (cap = this.rules.table.exec(src1))) {
+        if (top && (cap = this.rules.table.exec(src))) {
             item = {
                 type: 'table',
                 header: splitCells(cap[1].replace(/^ *| *\| *$/g, '')),
@@ -389,18 +366,7 @@ Lexer.prototype.token = function(src, top) {
         }
 
         // top-level paragraph
-        // if (top && (cap = this.rules.paragraph.exec(src))) {
-        //     src = src.substring(cap[0].length);
-        //     this.tokens.push({
-        //         type: 'paragraph',
-        //         text: cap[1].charAt(cap[1].length - 1) === '\n'
-        //             ? cap[1].slice(0, -1)
-        //             : cap[1]
-        //     });
-        //     continue;
-        // }
-
-        if (top && (cap = this.rules.paragraph.exec(src1))) {
+        if (top && (cap = this.rules.paragraph.exec(src))) {
             src = src.substring(cap[0].length);
             this.tokens.push({
                 type: 'paragraph',
@@ -410,7 +376,6 @@ Lexer.prototype.token = function(src, top) {
             });
             continue;
         }
-
 
         // text
         if (cap = this.rules.text.exec(src)) {
