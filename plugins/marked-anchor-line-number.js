@@ -16,7 +16,7 @@
 
     const Renderer = marked.Renderer;
     Renderer.prototype.line = function(line) {
-        return '<div id="line-number-anchor-'+line+'" style="height: 0;"></div>';
+        return '<div id="anchor-line-number-'+line+'" style="height: 0;"></div>';
     };
 
     const Lexer = marked.Lexer;
@@ -39,6 +39,8 @@
 
         // return this.token(src, true);
         const tokens = this.token(src, true);
+
+        console.log(tokens)
 
         const newTokens = [];
         tokens.forEach(function (token) {
@@ -64,9 +66,6 @@
     marked.setOptions({
         renderer: new Renderer()
     });
-
-
-
 
     return {};
 }));

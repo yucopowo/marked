@@ -4,78 +4,11 @@
     <meta charset="UTF-8">
     <title>marked</title>
 
-    <style>
-        html,body{
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .container{
-            width: 100%;
-            height: 100%;
-        }
-
-        .panel{
-            box-sizing: border-box;
-            overflow-y: auto;
-            height: 100%;
-            width: 45%;
-
-            padding-bottom: 600px;
-        }
-
-        .markdown{
-            float: left;
-
-        }
-
-        .markdown pre, .markdown code{
-            width: 100%;
-
-        }
-
-        .markdown pre{
-            margin-top: 0;
-        }
-
-        .markdown code{
-            font-size: 16px;
-            white-space: pre-wrap;
-        }
-
-        .preview{
-            margin-left: 50%;
-            padding: 10px 40px;
-        }
-
-        .preview pre, .preview code.preview-container{
-            white-space: pre-wrap;
-        }
-
-
-
-        .hljs-ln-numbers{
-            vertical-align: top;
-        }
-
-        .hljs-ln td.hljs-ln-code{
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .split-line{
-            height: 100vh;
-            border-right: 1px solid black;
-            width: 2px;
-            float: left;
-        }
-    </style>
     <link rel="stylesheet" href="//cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css">
-
     <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.12.0/styles/default.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/9.6.0/styles/xcode.min.css">
+
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -83,7 +16,15 @@
     <div class="panel markdown">
         <pre><code class="markdown markdown-container"></code></pre>
     </div>
+
     <div class="split-line"></div>
+
+    <div class="panel tokens">
+        <pre><code class="tokens-container"></code></pre>
+    </div>
+
+    <div class="split-line"></div>
+
     <div class="panel preview markdown-body">
         <pre><code class="preview-container"></code></pre>
     </div>
@@ -92,7 +33,6 @@
 <script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script src="//cdn.bootcss.com/highlightjs-line-numbers.js/2.3.0/highlightjs-line-numbers.min.js"></script>
 <script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/markdown.min.js"></script>
-<!--<script src="../plugins/marked-plugin-line-number.js"></script>-->
 <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
 <script src="//cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
