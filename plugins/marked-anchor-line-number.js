@@ -15,7 +15,7 @@
     }
 
     const Renderer = marked.Renderer;
-    Renderer.prototype.line = function(line) {
+    Renderer.prototype.linenumber = function(line) {
         return '<div id="anchor-line-number-'+line+'" style="height: 0;"></div>';
     };
 
@@ -25,7 +25,7 @@
         const mds2 = getLines (src);
         const mds = [];
         mds2.forEach(function (text, i) {
-            mds.push(text+'[__:'+(i+1)+':__]');
+            mds.push( '[__:'+(i+1)+':__]' + text );
         });
         src = mds.join('\n');
 
@@ -38,29 +38,32 @@
             .replace(/\u2424/g, '\n');
 
         // return this.token(src, true);
+        // debugger
+
         const tokens = this.token(src, true);
 
         console.log(tokens)
 
-        const newTokens = [];
-        tokens.forEach(function (token) {
-            if( token.text ){
-                let index = token.text.indexOf('[__:');
-                if(index !== -1){
-                    let line = token.text.substring(index+4).replace(':__]','');
-                    // token.line = line.replace(':__]','');
-                    token.text = token.text.replace(/\[__\:\d+\:__\]/,'');
-                    newTokens.push({
-                        type: 'line',
-                        line: line
-                    });
-                    newTokens.push(token);
-                }
-            }
-
-        });
-        newTokens.links = {};
-        return newTokens;
+        // const newTokens = [];
+        // tokens.forEach(function (token) {
+        //     if( token.text ){
+        //         let index = token.text.indexOf('[__:');
+        //         if(index !== -1){
+        //             let line = token.text.substring(index+4).replace(':__]','');
+        //             // token.line = line.replace(':__]','');
+        //             token.text = token.text.replace(/\[__\:\d+\:__\]/,'');
+        //             newTokens.push({
+        //                 type: 'linenumber',
+        //                 line: line
+        //             });
+        //             newTokens.push(token);
+        //         }
+        //     }
+        //
+        // });
+        // newTokens.links = {};
+        // return newTokens;
+        return tokens;
     };
 
     marked.setOptions({

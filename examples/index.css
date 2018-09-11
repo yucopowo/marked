@@ -67,7 +67,10 @@ html,body{
 
 .preview{
     /*margin-left: 50%;*/
-    padding: 10px 40px;
+    /*padding: 10px 40px;*/
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .preview pre, .preview code.preview-container{
